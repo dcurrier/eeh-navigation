@@ -1,6 +1,8 @@
 'use strict';
+angular.module('eehNavigation').directive('eehNavigationNavbarBrand', NavbarBrandDirective);
 
 /**
+ * @ngInject
  * @ngdoc directive
  * @name eeh-navigation-navbar-brand
  * @restrict AE
@@ -15,7 +17,7 @@
  * @param {string=} src Sets the src attribute of the image in the brand element.
  * @param {function=} click Sets the callback function of the brand element.
  */
-var NavbarBrandDirective = function () {
+function NavbarBrandDirective() {
     return {
         restrict: 'AE',
         templateUrl: 'template/eeh-navigation/navbar/eeh-navigation-navbar-brand.html',
@@ -28,6 +30,4 @@ var NavbarBrandDirective = function () {
             click: '='
         }
     };
-};
-
-angular.module('eehNavigation').directive('eehNavigationNavbarBrand', NavbarBrandDirective);
+}

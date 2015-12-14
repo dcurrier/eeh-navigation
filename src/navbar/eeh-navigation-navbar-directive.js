@@ -10,6 +10,10 @@
  *
  * @param {string=} menuName Sets the name of the menu that the directive will render.
  * @param {string=} [navClass=navbar-default navbar-static-top] Sets the ng-class attribute of the top-level nav element.
+ * @param {string=} containerClass
+ * Sets the ng-class attribute of the top-level "container" element.
+ * Common settings are nothing, "container" or "container-fluid".
+ * Some custom class or expression can also be used if desired.
  * @param {string=} brandText Sets the text of the brand element.
  * @param {string=} brandState Sets ui-sref of the brand element.
  * @param {string=} brandHref Sets the href attribute of the brand element.
@@ -24,6 +28,7 @@ var NavbarDirective = function ($window, eehNavigation) {
         scope: {
             menuName: '=',
             navClass: '=?',
+            containerClass: '=?',
             brandText: '=',
             brandState: '=',
             brandHref: '=',
@@ -36,7 +41,7 @@ var NavbarDirective = function ($window, eehNavigation) {
                 return eehNavigation.iconBaseClass();
             };
             scope.navClass = scope.navClass || 'navbar-default navbar-static-top';
-            scope.isNavbarCollapsed = false;
+            scope.isNavbarCollapsed = true;
             scope.$watch(eehNavigation.menuItems, function () {
                 if (angular.isUndefined(scope.menuName)) {
                     return;
@@ -63,7 +68,7 @@ var NavbarDirective = function ($window, eehNavigation) {
                 }
                 var width = (newValue.innerWidth > 0) ? newValue.innerWidth : $window.screen.width;
                 if (width >= 768) {
-                    scope.isNavbarCollapsed = false;
+                    scope.isNavbarCollapsed = true;
                 }
             }, true);
         }

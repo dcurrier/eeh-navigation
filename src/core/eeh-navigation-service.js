@@ -1,7 +1,9 @@
 'use strict';
 /* global MenuItem */
+angular.module('eehNavigation').provider('eehNavigation', NavigationService);
 
 /**
+ * @ngInject
  * @ngdoc service
  * @name eehNavigation
  *
@@ -189,11 +191,19 @@
  * ```
  *
  * Glyphicons are supported by default.
- * To use another library like Font Awesome, the base icon class needs to be set.
+ * To use another library, like Font Awesome, the base icon class needs to be set.
  * For example, "fa" is the base icon class of font awesome.
  *
  * ```javascript
  * eehNavigationProvider.iconBaseClass('fa');
+ * ```
+ *
+ * Certain directives might use the defaultIconClassPrefix property, if the directive has default icons
+ * (e.g. the chevrons in the sidebar directive), to specify an icon library's class prefix.
+ * For example, the prefix for Font Awesome is the same as the base class.
+ *
+ * ```javascript
+ * eehNavigationProvider.defaultIconClassPrefix('fa');
  * ```
  *
  * ## Language Translation
@@ -324,7 +334,7 @@
  *     });
  * ```
  */
-var NavigationService = function () {
+function NavigationService() {
     this._iconBaseClass = 'glyphicon';
     this._defaultIconClassPrefix = 'glyphicon';
     this._menuItems = {};
@@ -337,7 +347,7 @@ var NavigationService = function () {
         }
         return arr;
     };
-};
+}
 
 NavigationService.prototype.$get = function () {
     return this;
@@ -413,5 +423,3 @@ NavigationService.prototype.menuItem = function (name, config) {
 NavigationService.prototype.menuItems = function () {
     return this._menuItems;
 };
-
-angular.module('eehNavigation').provider('eehNavigation', NavigationService);

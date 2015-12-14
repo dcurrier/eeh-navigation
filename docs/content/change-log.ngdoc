@@ -6,6 +6,21 @@
 
 # Change Log
 
+## For >=4.3.0 See [GitHub milestones](https://github.com/ethanhann/eeh-navigation/milestones?state=closed).
+
+## 4.2.0
+
+__Enhancements__
+* Use @ngInject, update ngAnnotate.
+* Use iconBaseClass for default icon classes and add defaultIconClassPrefix to specify a prefix (e.g. fa, glyphicon).
+
+__Chores__
+* Remove jQuery dependency.
+* Visually polish up the doc site.
+
+__Fixes__
+* Allow a navbar brand image to be displayed if there is no text.
+
 ## 4.1.2
 __Fixes__
 * Use correct variables in navbar brand directive.
